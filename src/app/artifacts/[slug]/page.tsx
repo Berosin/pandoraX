@@ -7,6 +7,7 @@ import { CopyButton } from "@/components/ui/CopyButton";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/Tabs";
 import { PreviewFrame } from "@/components/preview/PreviewFrame";
 import { SourcePanel } from "@/components/artifact/SourcePanel";
+import { AssetsPanel } from "@/components/artifact/AssetsPanel";
 import { getAllArtifacts, getArtifactBySlug } from "@/lib/registry";
 import { loadArtifactSource } from "@/lib/artifact-loader";
 
@@ -86,6 +87,9 @@ export default async function ArtifactPage({ params }: ArtifactPageProps) {
                 <TabsTrigger value="install">Installation</TabsTrigger>
               )}
               <TabsTrigger value="source">Source</TabsTrigger>
+              {artifact.assets && artifact.assets.length > 0 && (
+                <TabsTrigger value="assets">Assets</TabsTrigger>
+              )}
             </TabsList>
 
             {installCommand && (
@@ -114,6 +118,19 @@ export default async function ArtifactPage({ params }: ArtifactPageProps) {
                 <SourcePanel files={source} />
               </div>
             </TabsContent>
+
+            {artifact.assets && artifact.assets.length > 0 && (
+              <TabsContent value="assets">
+                <p className="text-caption text-muted">
+                  {artifact.assets.length} asset
+                  {artifact.assets.length === 1 ? "" : "s"} — served from this
+                  artifact&apos;s own bundle, not the shared /public folder.
+                </p>
+                <div className="mt-4">
+                  <AssetsPanel artifact={artifact} assets={artifact.assets} />
+                </div>
+              </TabsContent>
+            )}
           </Tabs>
         </div>
       </Container>
