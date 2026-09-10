@@ -1,15 +1,15 @@
 import { ArtifactCard } from "./ArtifactCard";
+import { EmptyState } from "@/components/ui/EmptyState";
 import type { ArtifactDefinition } from "@/types/artifact";
 
 export function ArtifactGrid({ artifacts }: { artifacts: ArtifactDefinition[] }) {
   if (artifacts.length === 0) {
     return (
-      <div className="rounded-2xl border border-dashed border-line-strong py-20 text-center">
-        <p className="text-sm font-medium text-cream">No artifacts found</p>
-        <p className="mt-1 text-sm text-muted">
-          Try a different search term or category.
-        </p>
-      </div>
+      <EmptyState
+        bordered
+        title="No artifacts found"
+        description="Try a different search term or category."
+      />
     );
   }
 

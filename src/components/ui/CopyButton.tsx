@@ -20,7 +20,7 @@ export function CopyButton({ value, className }: { value: string; className?: st
     <button
       onClick={handleCopy}
       className={cn(
-        "text-xs font-medium text-bronze transition-opacity hover:underline",
+        "text-xs font-medium text-accent transition-opacity hover:underline",
         className
       )}
     >

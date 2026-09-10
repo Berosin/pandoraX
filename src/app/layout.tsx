@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { ThemeProvider } from "@/components/theme/ThemeProvider";
+import { TooltipProvider } from "@/components/ui/Tooltip";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { site } from "@/lib/site";
@@ -26,11 +28,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className="h-full antialiased">
-      <body className="flex min-h-full flex-col bg-void text-cream">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+    <html lang="en" className="h-full antialiased" suppressHydrationWarning>
+      <body className="flex min-h-full flex-col bg-background text-foreground">
+        <ThemeProvider>
+          <TooltipProvider delayDuration={250}>
+            <Header />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </TooltipProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -1,73 +1,230 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 /*
-  PandoraX design tokens.
-  The mark is a black hexagonal "box" with a bronze seam and a cream
-  ground — the palette below carries that identity into the product:
-  a deep warm-black surface (the box, closed) with cream/bronze used
-  as the light that escapes it.
+  ============================================================================
+  PandoraX Design System — tokens
+  ============================================================================
+  The mark is a black hexagonal "box" with a bronze seam, resting on a cream
+  ground. Dark mode is the box closed — a premium, technical, near-black
+  surface. Light mode is the box open — the same warm cream the mark sits
+  on, with near-black ink. Both share one accent: bronze.
+
+  Every color a component uses should come from a token below, not a raw
+  hex value, so the whole system stays swappable between themes.
+  ============================================================================
 */
+
 :root {
-  --px-void: #0b0a08;       /* app background */
-  --px-surface: #141210;    /* panels, cards */
+  /* Surfaces, dark → light order of elevation */
+  --px-background: #0b0a08;
+  --px-surface: #141210;
   --px-surface-raised: #1b1815;
-  --px-line: #2a2620;       /* hairline borders */
-  --px-line-strong: #3a352c;
 
-  --px-cream: #f3e1c3;      /* primary foreground / light */
-  --px-cream-dim: #c9bda3;  /* secondary text */
-  --px-muted: #8c8478;      /* tertiary text */
+  /* Structure */
+  --px-border: #2a2620;
+  --px-border-strong: #3a352c;
 
-  --px-bronze: #b98550;     /* accent, light */
-  --px-bronze-dim: #6b4226; /* accent, dark */
+  /* Ink */
+  --px-foreground: #f3e1c3;
+  --px-foreground-dim: #c9bda3;
+  --px-muted: #8c8478;
 
-  --background: var(--px-void);
-  --foreground: var(--px-cream);
+  /* Accent — bronze, constant hue across themes, tuned per surface */
+  --px-accent: #c2935f;
+  --px-accent-ink: #0b0a08; /* text placed on a solid accent fill */
+  --px-accent-muted: rgba(194, 147, 95, 0.16);
+
+  --px-shadow-elevated: 0 24px 60px -24px rgba(0, 0, 0, 0.7),
+    0 4px 16px -4px rgba(0, 0, 0, 0.4);
+  --px-shadow-soft: 0 8px 24px -12px rgba(0, 0, 0, 0.5);
+
+  color-scheme: dark;
+}
+
+.dark {
+  --px-background: #0b0a08;
+  --px-surface: #141210;
+  --px-surface-raised: #1b1815;
+
+  --px-border: #2a2620;
+  --px-border-strong: #3a352c;
+
+  --px-foreground: #f3e1c3;
+  --px-foreground-dim: #c9bda3;
+  --px-muted: #8c8478;
+
+  --px-accent: #c2935f;
+  --px-accent-ink: #0b0a08;
+  --px-accent-muted: rgba(194, 147, 95, 0.16);
+
+  --px-shadow-elevated: 0 24px 60px -24px rgba(0, 0, 0, 0.7),
+    0 4px 16px -4px rgba(0, 0, 0, 0.4);
+  --px-shadow-soft: 0 8px 24px -12px rgba(0, 0, 0, 0.5);
+
+  color-scheme: dark;
+}
+
+.light {
+  /* Surfaces — the box, opened: warm paper, not stark white */
+  --px-background: #faf6ec;
+  --px-surface: #f2ecdc;
+  --px-surface-raised: #ece3cd;
+
+  /* Structure */
+  --px-border: #e1d6ba;
+  --px-border-strong: #cbbb92;
+
+  /* Ink */
+  --px-foreground: #17140f;
+  --px-foreground-dim: #4a4335;
+  --px-muted: #83795f;
+
+  /* Accent — deepened for contrast against a light ground */
+  --px-accent: #8a5a30;
+  --px-accent-ink: #faf6ec;
+  --px-accent-muted: rgba(138, 90, 48, 0.12);
+
+  --px-shadow-elevated: 0 24px 48px -20px rgba(23, 20, 15, 0.18),
+    0 4px 12px -4px rgba(23, 20, 15, 0.1);
+  --px-shadow-soft: 0 8px 20px -12px rgba(23, 20, 15, 0.14);
+
+  color-scheme: light;
 }
 
 @theme inline {
-  --color-void: var(--px-void);
+  /* Color tokens → Tailwind utilities (bg-background, text-foreground, …) */
+  --color-background: var(--px-background);
   --color-surface: var(--px-surface);
   --color-surface-raised: var(--px-surface-raised);
-  --color-line: var(--px-line);
-  --color-line-strong: var(--px-line-strong);
 
-  --color-cream: var(--px-cream);
-  --color-cream-dim: var(--px-cream-dim);
+  --color-border: var(--px-border);
+  --color-border-strong: var(--px-border-strong);
+
+  --color-foreground: var(--px-foreground);
+  --color-foreground-dim: var(--px-foreground-dim);
   --color-muted: var(--px-muted);
 
-  --color-bronze: var(--px-bronze);
-  --color-bronze-dim: var(--px-bronze-dim);
+  --color-accent: var(--px-accent);
+  --color-accent-ink: var(--px-accent-ink);
+  --color-accent-muted: var(--px-accent-muted);
 
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  /* Radius — deliberately tight. A premium technical tool, not a pill-
+     shaped marketing site: buttons, inputs and badges read as precise
+     rectangles with just enough softening to not feel harsh. */
+  --radius-sm: 6px;
+  --radius-md: 9px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
 
-  --font-sans: "Inter var", Inter, ui-sans-serif, system-ui, -apple-system,
-    "Segoe UI", Roboto, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas,
+  /* Shadow — reserved for genuinely elevated surfaces (modals, popovers,
+     tooltips). Cards and panels are defined by a hairline border, never
+     a shadow, to keep the surface flat and avoid a "floating card" look. */
+  --shadow-elevated: var(--px-shadow-elevated);
+  --shadow-soft: var(--px-shadow-soft);
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas,
     monospace;
 }
 
 * {
-  border-color: var(--px-line);
+  border-color: var(--color-border);
 }
 
 html {
-  color-scheme: dark;
+  color-scheme: inherit;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--color-background);
+  color: var(--color-foreground);
   font-family: var(--font-sans);
 }
 
 ::selection {
-  background: var(--px-bronze-dim);
-  color: var(--px-cream);
+  background: var(--color-accent);
+  color: var(--color-accent-ink);
 }
 
-/* Respect reduced-motion preferences across the app. */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/*
+  ============================================================================
+  Typography scale
+  ============================================================================
+  A small, deliberate set of text styles used everywhere instead of ad hoc
+  size/weight/tracking combinations. Headings tighten as they grow; the
+  "label" style is the technical signature — uppercase, monospace, wide
+  tracking — used for eyebrows, metadata and category tags.
+  ============================================================================
+*/
+.text-display {
+  font-size: 3rem;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+@media (min-width: 640px) {
+  .text-display {
+    font-size: 4rem;
+  }
+}
+
+.text-h1 {
+  font-size: 2.25rem;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  font-weight: 600;
+}
+
+.text-h2 {
+  font-size: 1.75rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+}
+
+.text-h3 {
+  font-size: 1.25rem;
+  line-height: 1.35;
+  letter-spacing: -0.005em;
+  font-weight: 500;
+}
+
+.text-body {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.text-caption {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.text-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/*
+  ============================================================================
+  Motion
+  ============================================================================
+  Purposeful, not decorative: short durations, standard easing, and full
+  respect for reduced-motion preferences everywhere in the app.
+  ============================================================================
+*/
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -79,7 +236,47 @@ body {
   }
 }
 
-:focus-visible {
-  outline: 2px solid var(--px-bronze);
-  outline-offset: 2px;
+@keyframes px-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes px-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes px-pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes px-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes px-slide-in-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }

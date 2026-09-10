@@ -1,4 +1,5 @@
 import { Container } from "@/components/ui/Container";
+import { EmptyState } from "@/components/ui/EmptyState";
 import { LinkButton } from "@/components/ui/Button";
 
 export function ComingSoon({
@@ -9,14 +10,17 @@ export function ComingSoon({
   description: string;
 }) {
   return (
-    <Container className="flex flex-col items-center py-32 text-center">
-      <h1 className="text-3xl font-semibold tracking-tight text-cream">
-        {title}
-      </h1>
-      <p className="mt-3 max-w-md text-sm text-muted">{description}</p>
-      <LinkButton href="/artifacts" variant="secondary" className="mt-8">
-        Explore Artifacts
-      </LinkButton>
+    <Container>
+      <EmptyState
+        title={title}
+        description={description}
+        action={
+          <LinkButton href="/artifacts" variant="secondary">
+            Explore Artifacts
+          </LinkButton>
+        }
+        className="py-32"
+      />
     </Container>
   );
 }

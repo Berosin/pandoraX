@@ -1,4 +1,5 @@
 import { Container } from "@/components/ui/Container";
+import { Section } from "@/components/ui/Section";
 import { LinkButton } from "@/components/ui/Button";
 import { OpenTheBoxButton } from "@/components/artifact/OpenTheBoxButton";
 import { ArtifactCard } from "@/components/artifact/ArtifactCard";
@@ -12,13 +13,13 @@ export default function HomePage() {
 
   return (
     <>
-      <section className="border-b border-line py-28">
+      <Section divider className="pt-24 sm:pt-28">
         <Container className="flex flex-col items-center text-center">
           <Mark size={64} />
-          <h1 className="mt-8 text-5xl font-semibold tracking-tight text-cream sm:text-6xl">
+          <h1 className="text-display mt-8 text-foreground">
             Open the extraordinary.
           </h1>
-          <p className="mt-5 max-w-xl text-balance text-base text-cream-dim">
+          <p className="text-body mt-5 max-w-xl text-balance text-foreground-dim">
             Interactive components, motion experiments, WebGL scenes and
             creative digital artifacts for the modern web. Explore it.
             Customize it. Take the source.
@@ -28,18 +29,16 @@ export default function HomePage() {
             <OpenTheBoxButton />
           </div>
         </Container>
-      </section>
+      </Section>
 
       {featured.length > 0 && (
-        <section className="border-b border-line py-20">
+        <Section divider>
           <Container>
             <div className="flex items-end justify-between">
-              <h2 className="text-2xl font-medium text-cream">
-                Featured artifacts
-              </h2>
+              <h2 className="text-h2 text-foreground">Featured artifacts</h2>
               <Link
                 href="/artifacts"
-                className="text-sm text-bronze hover:underline"
+                className="text-sm text-accent hover:underline"
               >
                 View all
               </Link>
@@ -50,36 +49,36 @@ export default function HomePage() {
               ))}
             </div>
           </Container>
-        </section>
+        </Section>
       )}
 
-      <section className="border-b border-line py-20">
+      <Section divider>
         <Container>
-          <h2 className="text-2xl font-medium text-cream">Categories</h2>
+          <h2 className="text-h2 text-foreground">Categories</h2>
           <div className="mt-8 flex flex-wrap gap-3">
             {ARTIFACT_CATEGORIES.map((category) => (
               <Link
                 key={category}
                 href="/artifacts"
-                className="rounded-full border border-line-strong px-4 py-2 text-sm text-cream-dim transition-colors hover:border-bronze hover:text-bronze"
+                className="rounded-md border border-border-strong px-4 py-2 text-sm text-foreground-dim transition-colors hover:border-accent hover:text-accent"
               >
                 {category}
               </Link>
             ))}
           </div>
         </Container>
-      </section>
+      </Section>
 
-      <section className="py-24">
+      <Section>
         <Container className="flex flex-col items-center text-center">
-          <h2 className="text-3xl font-semibold text-cream">
+          <h2 className="text-h2 text-foreground">
             Build something extraordinary.
           </h2>
           <LinkButton href="/artifacts" className="mt-7">
             Explore PandoraX
           </LinkButton>
         </Container>
-      </section>
+      </Section>
     </>
   );
 }

@@ -2,6 +2,7 @@
 
 import { Suspense } from "react";
 import { ArtifactErrorBoundary } from "./ArtifactErrorBoundary";
+import { Spinner } from "@/components/ui/Spinner";
 import type { ArtifactDefinition, ArtifactConfigValues } from "@/types/artifact";
 
 interface PreviewFrameProps {
@@ -48,8 +49,8 @@ export function PreviewFrame({ artifact, values, className }: PreviewFrameProps)
 
 function PreviewLoading() {
   return (
-    <div className="flex h-full items-center justify-center text-xs text-muted">
-      Initializing artifact…
+    <div className="flex h-full items-center justify-center text-muted">
+      <Spinner size={18} />
     </div>
   );
 }

@@ -9,7 +9,7 @@ export function Mark({ size = 28, className }: { size?: number; className?: stri
       alt=""
       width={size}
       height={size}
-      className={cn("rounded-[6px]", className)}
+      className={cn("rounded-sm", className)}
       priority
     />
   );
@@ -20,13 +20,13 @@ export function Wordmark({ href = "/", className }: { href?: string; className?:
     <Link
       href={href}
       className={cn(
-        "flex items-center gap-2.5 text-lg font-semibold tracking-tight text-cream",
+        "flex items-center gap-2.5 text-lg font-semibold tracking-tight text-foreground",
         className
       )}
     >
       <Mark size={26} />
       Pandora
-      <span className="text-bronze">X</span>
+      <span className="text-accent">X</span>
     </Link>
   );
 }

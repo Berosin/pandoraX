@@ -30,6 +30,7 @@ export function ArtifactExplorer({ artifacts, categories }: ArtifactExplorerProp
         value={query}
         onChange={(event) => setQuery(event.target.value)}
         aria-label="Search artifacts"
+        className="max-w-sm"
       />
 
       <div className="flex flex-wrap gap-2">
@@ -38,10 +39,10 @@ export function ArtifactExplorer({ artifacts, categories }: ArtifactExplorerProp
             key={category}
             onClick={() => setActiveCategory(category)}
             className={cn(
-              "rounded-full border px-4 py-1.5 text-sm transition-colors",
+              "rounded-md border px-3.5 py-1.5 text-sm transition-colors",
               activeCategory === category
-                ? "border-bronze text-bronze"
-                : "border-line-strong text-cream-dim hover:text-cream"
+                ? "border-accent text-accent"
+                : "border-border-strong text-foreground-dim hover:text-foreground"
             )}
           >
             {category}

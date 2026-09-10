@@ -32,7 +32,7 @@ export class ArtifactErrorBoundary extends Component<Props, State> {
       return (
         this.props.fallback ?? (
           <div className="flex h-full flex-col items-center justify-center gap-3 text-center">
-            <p className="text-sm font-medium text-cream">
+            <p className="text-sm font-medium text-foreground">
               Artifact unavailable
             </p>
             <p className="max-w-xs text-xs text-muted">
@@ -40,7 +40,7 @@ export class ArtifactErrorBoundary extends Component<Props, State> {
             </p>
             <button
               onClick={this.reset}
-              className="text-xs font-medium text-bronze hover:underline"
+              className="text-xs font-medium text-accent hover:underline"
             >
               Retry
             </button>
