@@ -10,12 +10,17 @@ import type { ArtifactCategory, ArtifactDefinition } from "@/types/artifact";
 interface ArtifactExplorerProps {
   artifacts: ArtifactDefinition[];
   categories: ArtifactCategory[];
+  initialCategory?: ArtifactCategory | "All";
 }
 
-export function ArtifactExplorer({ artifacts, categories }: ArtifactExplorerProps) {
+export function ArtifactExplorer({
+  artifacts,
+  categories,
+  initialCategory = "All",
+}: ArtifactExplorerProps) {
   const [query, setQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState<ArtifactCategory | "All">(
-    "All"
+    initialCategory
   );
 
   const results = useMemo(
