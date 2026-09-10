@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { ArtifactExplorer } from "@/components/artifact/ArtifactExplorer";
-import { getAllArtifacts, getUsedCategories } from "@/lib/registry";
+import { getAllArtifacts } from "@/lib/registry";
 import { ARTIFACT_CATEGORIES, type ArtifactCategory } from "@/types/artifact";
 
 export const metadata: Metadata = {
   title: "Explore Artifacts",
   description:
-    "Browse PandoraX's library of interactive components, motion experiments and WebGL scenes.",
+    "Browse PandoraX's library of interactive artifacts, motion experiments and WebGL scenes.",
 };
 
 function parseCategory(value: string | undefined): ArtifactCategory | undefined {
@@ -22,7 +22,6 @@ interface ArtifactsPageProps {
 export default async function ArtifactsPage({ searchParams }: ArtifactsPageProps) {
   const { category } = await searchParams;
   const artifacts = getAllArtifacts();
-  const categories = getUsedCategories();
 
   return (
     <Section className="pt-12">
@@ -35,7 +34,6 @@ export default async function ArtifactsPage({ searchParams }: ArtifactsPageProps
         <div className="mt-10">
           <ArtifactExplorer
             artifacts={artifacts}
-            categories={categories}
             initialCategory={parseCategory(category)}
           />
         </div>
