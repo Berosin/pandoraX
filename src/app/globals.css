@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+/*
+  PandoraX design tokens.
+  The mark is a black hexagonal "box" with a bronze seam and a cream
+  ground — the palette below carries that identity into the product:
+  a deep warm-black surface (the box, closed) with cream/bronze used
+  as the light that escapes it.
+*/
+:root {
+  --px-void: #0b0a08;       /* app background */
+  --px-surface: #141210;    /* panels, cards */
+  --px-surface-raised: #1b1815;
+  --px-line: #2a2620;       /* hairline borders */
+  --px-line-strong: #3a352c;
+
+  --px-cream: #f3e1c3;      /* primary foreground / light */
+  --px-cream-dim: #c9bda3;  /* secondary text */
+  --px-muted: #8c8478;      /* tertiary text */
+
+  --px-bronze: #b98550;     /* accent, light */
+  --px-bronze-dim: #6b4226; /* accent, dark */
+
+  --background: var(--px-void);
+  --foreground: var(--px-cream);
+}
+
+@theme inline {
+  --color-void: var(--px-void);
+  --color-surface: var(--px-surface);
+  --color-surface-raised: var(--px-surface-raised);
+  --color-line: var(--px-line);
+  --color-line-strong: var(--px-line-strong);
+
+  --color-cream: var(--px-cream);
+  --color-cream-dim: var(--px-cream-dim);
+  --color-muted: var(--px-muted);
+
+  --color-bronze: var(--px-bronze);
+  --color-bronze-dim: var(--px-bronze-dim);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --font-sans: "Inter var", Inter, ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas,
+    monospace;
+}
+
+* {
+  border-color: var(--px-line);
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--px-bronze-dim);
+  color: var(--px-cream);
+}
+
+/* Respect reduced-motion preferences across the app. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--px-bronze);
+  outline-offset: 2px;
+}
