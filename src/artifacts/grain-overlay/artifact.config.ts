@@ -18,6 +18,12 @@ export const grainOverlay: ArtifactDefinition = {
 
   configurable: false,
 
+  performance: {
+    impact: "Low",
+    notes: "A tiny 64×64 pixel buffer redrawn continuously — cheap per frame.",
+  },
+  browserRequirements: ["Canvas2D support (universal in modern browsers)"],
+
   license: "MIT",
   author: "PandoraX",
   version: "0.1.0",

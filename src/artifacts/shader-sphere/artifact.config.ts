@@ -35,6 +35,13 @@ export const shaderSphere: ArtifactDefinition = {
     },
   },
 
+  performance: {
+    impact: "Moderate",
+    notes:
+      "Runs a live WebGL context and a per-frame shader pass. Unmounts off-screen to limit GPU usage (see PreviewFrame).",
+  },
+  browserRequirements: ["WebGL support"],
+
   license: "MIT",
   author: "PandoraX",
   version: "0.1.0",

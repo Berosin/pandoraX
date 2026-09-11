@@ -41,6 +41,12 @@ export const textReveal: ArtifactDefinition = {
     },
   },
 
+  performance: {
+    impact: "Low",
+    notes: "A handful of small Motion-driven elements, animated once on mount.",
+  },
+  browserRequirements: ["Any modern browser"],
+
   license: "MIT",
   author: "PandoraX",
   version: "0.1.0",

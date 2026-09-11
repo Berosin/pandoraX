@@ -53,6 +53,13 @@ export const auroraGlobe: ArtifactDefinition = {
     },
   },
 
+  performance: {
+    impact: "Moderate",
+    notes:
+      "Redraws a small internal noise buffer every frame while visible. Unmounts off-screen (see PreviewFrame).",
+  },
+  browserRequirements: ["Canvas2D support (universal in modern browsers)"],
+
   license: "MIT",
   author: "PandoraX",
   version: "0.1.0",

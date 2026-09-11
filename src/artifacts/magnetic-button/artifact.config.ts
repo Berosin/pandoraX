@@ -36,6 +36,12 @@ export const magneticButton: ArtifactDefinition = {
     },
   },
 
+  performance: {
+    impact: "Low",
+    notes: "A single CSS transform driven by pointer position — negligible cost.",
+  },
+  browserRequirements: ["Any modern browser"],
+
   license: "MIT",
   author: "PandoraX",
   version: "0.1.0",

@@ -28,6 +28,12 @@ export const dragSnapCard: ArtifactDefinition = {
     },
   },
 
+  performance: {
+    impact: "Low",
+    notes: "Idle until dragged; GSAP handles the single release tween.",
+  },
+  browserRequirements: ["Pointer Events support (universal in modern browsers)"],
+
   license: "MIT",
   author: "PandoraX",
   version: "0.1.0",

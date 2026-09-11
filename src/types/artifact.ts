@@ -137,6 +137,15 @@ export interface ArtifactAsset {
   description?: string;
 }
 
+export type PerformanceImpact = "Low" | "Moderate" | "High";
+
+/** A brief, honest performance characterization — shown on the detail
+ * page's metadata panel. Not a benchmark, just a heads-up. */
+export interface ArtifactPerformance {
+  impact: PerformanceImpact;
+  notes?: string;
+}
+
 /**
  * The static metadata every artifact registers with the platform.
  * This is the shape referenced throughout the spec (§13) — the gallery,
@@ -161,6 +170,9 @@ export interface ArtifactMetadata {
 
   configurable: boolean;
   configSchema?: ArtifactConfigSchema;
+
+  performance: ArtifactPerformance;
+  browserRequirements: string[];
 
   license: string;
   author: string;
