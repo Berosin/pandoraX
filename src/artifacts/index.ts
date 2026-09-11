@@ -3,6 +3,8 @@ import { magneticButton } from "./magnetic-button/artifact.config";
 import { textReveal } from "./text-reveal/artifact.config";
 import { auroraGlobe } from "./aurora-globe/artifact.config";
 import { grainOverlay } from "./grain-overlay/artifact.config";
+import { dragSnapCard } from "./drag-snap-card/artifact.config";
+import { shaderSphere } from "./shader-sphere/artifact.config";
 
 /**
  * The full artifact catalog. Adding a new artifact means creating its
@@ -16,4 +18,6 @@ export const artifacts: ArtifactDefinition[] = [
   textReveal,
   auroraGlobe,
   grainOverlay,
+  dragSnapCard,
+  shaderSphere,
 ];

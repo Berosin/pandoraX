@@ -18,7 +18,9 @@ with simple radial shading standing in for real sphere lighting. The
 implementation for the WebGL version of this artifact — a real sphere
 mesh, a fresnel rim light, and a drifting noise-texture sample for the
 aurora bands. They are **not wired to a live GPU context yet**. That
-lands with PandoraX's WebGL preview engine.
+lands with PandoraX's WebGL preview engine — see `artifacts/shader-sphere`
+for a live example of these exact techniques (fresnel rim light, GLSL
+uniforms) running on a real `<Canvas>`.
 
 ## Configuration
 

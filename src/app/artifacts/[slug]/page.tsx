@@ -76,7 +76,7 @@ export default async function ArtifactPage({ params }: ArtifactPageProps) {
           </dl>
         </div>
 
-        <div className="mt-10 flex min-h-[22rem] items-center justify-center rounded-lg border border-border bg-surface">
+        <div className="mt-10 flex h-[22rem] items-center justify-center rounded-lg border border-border bg-surface sm:h-[26rem]">
           <PreviewFrame artifact={artifact} />
         </div>
 
