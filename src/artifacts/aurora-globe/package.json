@@ -1,0 +1,10 @@
+{
+  "name": "aurora-globe",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A noise-shaded aurora sphere — Canvas2D today, WebGL planned.",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^19.0.0"
+  }
+}

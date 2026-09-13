@@ -1,0 +1,26 @@
+# save as gen_texture.py, run: python3 gen_texture.py
+from PIL import Image
+import math
+
+size = 128
+img = Image.new('RGB', (size, size))
+px = img.load()
+
+def lerp(a, b, t):
+    return a + (b - a) * t
+
+c1 = (18, 30, 26)
+c2 = (58, 168, 140)
+c3 = (120, 90, 200)
+
+for y in range(size):
+    for x in range(size):
+        nx, ny = x / size, y / size
+        n = (math.sin(nx * 6.283 * 2 + ny * 3.0) + math.sin(ny * 6.283 * 3 + nx * 1.5)) / 4 + 0.5
+        band = (math.sin(ny * 6.283 * 4 + nx * 2.0) + 1) / 2
+        r = lerp(lerp(c1[0], c2[0], n), c3[0], band * 0.3)
+        g = lerp(lerp(c1[1], c2[1], n), c3[1], band * 0.3)
+        b = lerp(lerp(c1[2], c2[2], n), c3[2], band * 0.3)
+        px[x, y] = (int(r), int(g), int(b))
+
+img.save('texture.png')

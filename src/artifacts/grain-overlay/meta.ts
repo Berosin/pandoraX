@@ -1,0 +1,29 @@
+import type { ArtifactMetadata } from "@/types/artifact";
+
+export const grainOverlayMeta: ArtifactMetadata = {
+  id: "grain-overlay",
+  name: "Grain Overlay",
+  slug: "grain-overlay",
+  description:
+    "A constant low-alpha film-grain wash, redrawn every frame. The simplest possible artifact: one file, no dependencies beyond React.",
+  category: "Backgrounds",
+  technologies: ["React", "TypeScript", "Canvas"],
+  difficulty: "Beginner",
+  renderMode: "direct",
+
+  entry: "index.tsx",
+  files: [{ path: "index.tsx", language: "tsx", isEntry: true }],
+  dependencies: ["react"],
+
+  configurable: false,
+
+  performance: {
+    impact: "Low",
+    notes: "A tiny 64×64 pixel buffer redrawn continuously — cheap per frame.",
+  },
+  browserRequirements: ["Canvas2D support (universal in modern browsers)"],
+
+  license: "MIT",
+  author: "PandoraX",
+  version: "0.1.0",
+};
